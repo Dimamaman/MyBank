@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashScreen">
+
+    <fragment
+        android:id="@+id/splashScreen"
+        android:name="com.example.mybank.ui.splash.SplashScreen"
+        tools:layout="@layout/screen_splash"
+        android:label="SplashScreen" >
+        <action
+            android:id="@+id/action_splashScreen_to_termsScreen"
+            app:destination="@id/termsScreen"
+            app:popUpTo="@id/splashScreen"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashScreen_to_loginScreen"
+            app:destination="@id/loginScreen"
+            app:popUpTo="@id/splashScreen" />
+        <action
+            android:id="@+id/action_splashScreen_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/screen_terms"
+        android:id="@+id/termsScreen"
+        android:name="com.example.mybank.ui.terms.TermsScreen"
+        android:label="TermsScreen" >
+        <action
+            android:id="@+id/action_termsScreen_to_signUp"
+            app:destination="@id/signUp" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUp"
+        android:name="com.example.mybank.ui.register.SignUp"
+        tools:layout="@layout/up_sign"
+        android:label="SignUp" >
+        <action
+            android:id="@+id/action_signUp_to_loginScreen"
+            app:destination="@id/loginScreen" />
+        <action
+            android:id="@+id/action_signUp_to_LoginVerify"
+            app:destination="@id/LoginVerify" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginScreen"
+        android:name="com.example.mybank.ui.login.LoginScreen"
+        tools:layout="@layout/screen_login"
+        android:label="LoginScreen" >
+        <action
+            android:id="@+id/action_loginScreen_to_LoginVerify"
+            app:destination="@id/LoginVerify" >
+
+        </action>
+        <action
+            android:id="@+id/action_loginScreen_to_signUp"
+            app:destination="@id/signUp" />
+    </fragment>
+    <fragment
+        android:id="@+id/LoginVerify"
+        android:name="com.example.mybank.ui.signupverify.SignUpVerify"
+        tools:layout="@layout/verify_login"
+        android:label="LoginVerify" >
+        <argument
+            android:name="phoneNumber"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_LoginVerify_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <argument
+            android:name="token"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.mybank.ui.home.HomeFragment"
+        tools:layout="@layout/fragment_home"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_addCard"
+            app:destination="@id/addCard" />
+    </fragment>
+    <fragment
+        android:id="@+id/addCard"
+        android:name="com.example.mybank.ui.addCard.AddCard"
+        tools:layout="@layout/card_add"
+        android:label="AddCard" >
+        <action
+            android:id="@+id/action_addCard_to_cardAddedSuccessfully"
+            app:destination="@id/cardAddedSuccessfully" />
+        <action
+            android:id="@+id/action_addCard_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cardAddedSuccessfully"
+        android:name="com.example.mybank.ui.addCard.CardAddedSuccessfully"
+        tools:layout="@layout/successfully_added_card"
+        android:label="CardAddedSuccessfully" >
+        <action
+            android:id="@+id/action_cardAddedSuccessfully_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+</navigation>
